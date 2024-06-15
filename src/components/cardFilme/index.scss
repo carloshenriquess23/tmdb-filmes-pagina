@@ -56,3 +56,19 @@
         color:#727272;
     }
 }
+
+@media(max-width:768px){
+
+    .card-filme{
+        width:180px;
+        height:260px;
+    }
+}
+
+@media(max-width:440px){
+
+    .card-filme{
+        width:150px;
+        height:250px;
+    }
+}

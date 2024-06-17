@@ -58,17 +58,13 @@
             display:flex;
             flex-direction:column;
 
-            >h3{
-
-                margin-bottom:10px;
-            }
-
             .listagem{
 
                 display:flex;
                 flex-direction: row;
 
                 gap:30px;
+                padding:20px 0px;
                 width:100%;
 
                 overflow-x: scroll !important;

@@ -1,7 +1,7 @@
 import './index.scss';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { chamarMaisPopulares, chamarMelhorAvaliados, chamarMaisPopularesBrasileiros } from '../../api/filmesController.js';
 import Header from '../../components/cabecalho';
 import CardFilme from '../../components/cardFilme';
 
@@ -12,26 +12,25 @@ export default function HomeFilmes(){
     const [melhorAvaliados,setMelhorAvaliados]=useState([]);
     const [melhoresBrasileiros,setMelhoresBrasileiros]=useState([]);
 
-    async function chamarMaisPopulares(){
+    async function respMaisPopulares(){
 
         try{
-            const results=await axios.get('https://filmes-api-three.vercel.app/filmes/buscar/populares');
+            const resp=await chamarMaisPopulares();
 
-            setFilmesPopulares(results.data.results);
+            setFilmesPopulares(resp.results);
         }
-
         catch(err){
 
             alert('Ocorreu um erro ao chamar os filmes mais populares');
         }
     }
 
-    async function chamarMelhorAvaliados(){
+    async function respMelhorAvaliados(){
 
         try{
-            const results=await axios.get('https://filmes-api-three.vercel.app/filmes/buscar/melhorAvaliados');
+            const results=await chamarMelhorAvaliados();
 
-            setMelhorAvaliados(results.data.results);
+            setMelhorAvaliados(results.results);
         }
 
         catch(err){
@@ -40,12 +39,12 @@ export default function HomeFilmes(){
         }
     }
 
-    async function chamarMaisPopularesBrasileiros(){
+    async function respMaisPopularesBrasileiros(){
 
         try{
-            const results=await axios.get('https://filmes-api-three.vercel.app/filmes/buscar/populares/BR');
+            const results=await chamarMaisPopularesBrasileiros();
 
-            setMelhoresBrasileiros(results.data.results);
+            setMelhoresBrasileiros(results.results);
         }
 
         catch(err){
@@ -56,9 +55,9 @@ export default function HomeFilmes(){
 
     useEffect(() => {
 
-        chamarMaisPopulares();
-        chamarMelhorAvaliados();
-        chamarMaisPopularesBrasileiros();
+        respMaisPopulares();
+        respMelhorAvaliados();
+        respMaisPopularesBrasileiros();
     },[]);
 
     return(

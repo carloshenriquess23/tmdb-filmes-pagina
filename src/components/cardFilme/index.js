@@ -1,27 +1,42 @@
 import { useState,useEffect } from 'react';
 import './index.scss';
 import {Link} from 'react-router-dom';
+import { formatarImagemFilme } from '../../functions/functions.js';
 
 export default function CardFilme(props){
 
     const [image,setImage]=useState("");
+    const [nomeFilme,setNomeFilme]=useState("");
 
     function verificarPoster(){
 
-        if(!props.poster){
+        setImage(formatarImagemFilme(props.poster));
+    }
 
-            setImage("/images/default-placeholder.png");
+    function formatarNomeFilme(){
+
+        let nomeFormatado=props.nome;
+
+        if(props.nome.length>40){
+
+            for(let cont=0;cont<3;cont++){
+
+               nomeFormatado=nomeFormatado.substring(0,37+cont)+".";
+            }
+
+            setNomeFilme(nomeFormatado);
         }
 
         else{
 
-            setImage('https://image.tmdb.org/t/p/w500'+props.poster);
+            setNomeFilme(props.nome)
         }
     }
 
     useEffect(() => {
 
         verificarPoster();
+        formatarNomeFilme();
     });
     
     return(
@@ -37,7 +52,7 @@ export default function CardFilme(props){
                 </svg>
             </div> 
 
-            <p>{props.nome}</p>
+            <p>{nomeFilme}</p>
             <p id='lancamento'>{props.lancamento}</p> 
         </Link>
     );

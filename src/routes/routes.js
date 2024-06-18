@@ -1,12 +1,14 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import FilmeHomePage from '../pages/filmesHome';
-import FilmePesquisaPage from "../pages/filmePesquisa/index.";
+import FilmePesquisaPage from "../pages/filmePesquisa";
+import FilmeInformacoesPage from '../pages/filmeInfs';
 
 const Rotas=()=>(
     <BrowserRouter>
         <Routes>
             <Route path='/' element={<FilmeHomePage/>}></Route>
-            <Route path='/filme/buscar/:nome'></Route>
+            <Route path='/filme/buscar/:nome' element={<FilmePesquisaPage/>}></Route>
+            <Route path='/filme/:id' element={<FilmeInformacoesPage/>}></Route>
         </Routes>
     </BrowserRouter>
 )

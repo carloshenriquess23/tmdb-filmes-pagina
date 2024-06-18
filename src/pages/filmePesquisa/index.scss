@@ -1,0 +1,127 @@
+.pagina-pesquisa{
+
+    background-color: #353634;
+    min-height:100vh;
+
+    .section-pesquisa{
+
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        margin-top:50px;
+        padding:20px;
+        gap:20px;
+
+        .container-box-pesquisa{
+
+            display:flex;
+            flex-direction: column;
+
+            width:50%;
+            gap:10px;
+
+            .box-pesquisa{
+
+                display:flex;
+                flex-direction: row;
+                align-items: center;
+
+                gap:5px;
+                padding:5px;
+
+                flex-grow:1;
+                background-color: #2B2B2B;
+
+                border-radius: 10px;
+                border:1px solid #fff;
+
+                >input{
+
+                    flex-grow:1;
+                }
+            }
+        }
+    }
+
+    .section-listagem{
+
+        .container-listagem{
+
+            display:flex;
+            flex-direction:column;
+            justify-content:space-between;
+
+            gap:20px;
+            padding:20px;
+
+            .listagem{
+                display:flex;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+
+                gap:10px;
+                padding: 20px 0px;
+            }
+
+            .pageamento{
+
+                display:flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+                button{
+
+                    display:flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    padding:10px;
+                    gap:5px;
+
+                    background-color: #E6324B;
+                    border-radius:20px;
+                }
+            }
+        }
+
+        .container-sem-resultados{
+
+            padding:20px;
+
+            >h2{
+
+                font-family:kadwa;
+
+                span{
+
+                    font-size:inherit;
+                    color:#F5F5F5;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:1024px){
+
+    .pagina-pesquisa .section-pesquisa{
+
+        flex-direction: column;
+
+        .container-box-pesquisa{
+
+            width:100%;
+        }
+    }
+}
+
+@media(max-width:768px){
+
+    .pagina-pesquisa .section-listagem .container-listagem{
+
+        padding:5px;
+    }
+}

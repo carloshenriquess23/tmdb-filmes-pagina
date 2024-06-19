@@ -1,6 +1,6 @@
 import './index.scss';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { chamarMaisPopulares, chamarMelhorAvaliados, chamarMaisPopularesBrasileiros } from '../../api/filmesController.js';
 import Header from '../../components/cabecalho';
 import CardFilme from '../../components/cardFilme';
@@ -11,6 +11,8 @@ export default function HomeFilmes(){
     const [filmesPopulares, setFilmesPopulares] = useState([]);
     const [melhorAvaliados,setMelhorAvaliados]=useState([]);
     const [melhoresBrasileiros,setMelhoresBrasileiros]=useState([]);
+
+    const navig=useNavigate();
 
     async function respMaisPopulares(){
 
@@ -78,7 +80,13 @@ export default function HomeFilmes(){
                         </svg>
                     </Link>
                     
-                    <input type='text' placeholder='Digite o nome de um filme' value={nomeFilme} onChange={(e) => setNomeFilme(e.target.value)}/>
+                    <input type='text' placeholder='Digite o nome de um filme' value={nomeFilme} 
+                                onChange={(e) => setNomeFilme(e.target.value)} 
+                                onKeyUpCapture={(e) => {
+                                    if(e.key==="Enter" && nomeFilme.length>0){
+                                        navig('/filme/buscar/'+nomeFilme);
+                                    }
+                                }}/>
                 </div>
             </section>
 

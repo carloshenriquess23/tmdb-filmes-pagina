@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react';
 import './index.scss';
 import {Link} from 'react-router-dom';
-import { formatarImagemFilme } from '../../functions/functions.js';
+import { formatarImagemFilme, formatarLancamento } from '../../functions/functions.js';
 
 export default function CardFilme(props){
 
@@ -53,7 +53,7 @@ export default function CardFilme(props){
             </div> 
 
             <p>{nomeFilme}</p>
-            <p id='lancamento'>{props.lancamento}</p> 
+            <p id='lancamento'>{formatarLancamento(props.lancamento)}</p> 
         </Link>
     );
 }

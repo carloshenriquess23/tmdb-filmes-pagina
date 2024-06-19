@@ -1,7 +1,7 @@
 import './index.scss';
 import Header from '../../components/cabecalho';
 import { useState,useEffect } from 'react';
-import { useParams} from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 import CardFilme from '../../components/cardFilme';
 import { buscarFilmesNome } from '../../api/filmesController.js';
 
@@ -15,6 +15,7 @@ export default function FilmePesquisaPage(){
     const[nomeFilme,setNomeFilme]=useState("");
 
     const { nome }=useParams();
+    const navig=useNavigate();
 
     async function respBuscarFilmes(){
 
@@ -50,7 +51,14 @@ export default function FilmePesquisaPage(){
                             </svg>
                         </a>
                         
-                        <input type='text' placeholder='Digite o nome de um filme' value={nomeFilme} onChange={(e) => setNomeFilme(e.target.value)}/>
+                        <input type='text' placeholder='Digite o nome de um filme' value={nomeFilme} 
+                                onChange={(e) => setNomeFilme(e.target.value)} 
+                                onKeyUpCapture={(e) => {
+                                    if(e.key==="Enter" && nomeFilme.length>0){
+                                        navig('/filme/buscar/'+nomeFilme);
+                                        window.location.reload();
+                                    }
+                                }}/>
                     </div>
 
                     <p>Não encontrou o que queria ? Digite novamente o nome do filme e verifique a ortografia</p>

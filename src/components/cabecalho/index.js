@@ -1,12 +1,14 @@
 import './index.scss';
+import { Link } from 'react-router-dom';
 
 export default function Header(){
 
     return(
 
         <header className='cabecalho-page'>
+            <Link to="/" className='link'>Voltar para página Inicial</Link>
+            
             <p>Projeto para meu portfolio.</p>
-            <a href="https://portfolio-page-7t665yre3-carlos-projects-6c33deb2.vercel.app">Ver Portfolio</a>
         </header>
     );
 }

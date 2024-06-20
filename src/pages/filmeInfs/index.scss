@@ -1,30 +1,13 @@
 .informacoes-filme-page{
-
+    
     background-color:#2B2B2B;
     min-height:100vh;
-
-    .container-button{
-        
-        display:flex;
-        flex-direction: row;
-        justify-content: flex-end;
-
-        width:100%;
-        padding:0px 20px;
-        margin-top:55px;
-
-        .button-retornar{
-
-            background-color: #F2E3C6;
-            border-radius:10px;
-
-            padding:10px;
-
-            color:#000;
-            text-decoration: none;
-        }   
-    }
     
+    main{
+
+        min-height:90vh;
+    }
+
     .infs-filme{
 
         display:flex;
@@ -107,6 +90,7 @@
 
         display:flex;
         flex-direction: column;
+        align-items: center;
 
         padding:20px;
 

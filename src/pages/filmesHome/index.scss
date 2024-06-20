@@ -3,6 +3,16 @@
     min-height:100vh;
     background:#353634;
 
+    >header .link{
+
+        display:none;
+    }
+
+    main{
+
+        min-height:90vh;
+    }
+
     .section-pesquisa{
 
         display:flex;
